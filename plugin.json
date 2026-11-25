@@ -1,12 +1,17 @@
 {
     "name": "ShadcnTheme",
     "description": "Modern Kanboard theme inspired by shadcn/ui design principles with light/dark mode toggle and system preference detection.",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "author": "Carmelo Santana",
     "license": "MIT",
     "homepage": "https://github.com/carmelosantana/kanboard-shadcn-theme",
     "kanboard_version": ">=1.2.47",
     "php_version": ">=8.4",
+    "deprecated": {
+        "superseded_by": "Harbor",
+        "since": "1.3.0",
+        "reason": "Harbor is ShadcnTheme's successor: the same look, a no-flash theme and the suite UI kit."
+    },
     "recommends": [
         { "plugin": "Steward", "min_version": "1.0.0", "reason": "site logo, favicon and name" }
     ]

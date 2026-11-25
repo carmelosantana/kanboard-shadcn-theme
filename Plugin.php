@@ -111,6 +111,10 @@ class Plugin extends Base
             'template' => 'ShadcnTheme:layout/head'
         ]);
 
+        $this->helper->hook->attachCallable('template:layout:top', 'ShadcnTheme:config/deprecated', function (): array {
+            return ['isSettingsPage' => $this->isSettingsPage()];
+        });
+
         // Add theme toggle to page header dropdown
         $this->hook->on('template:header:dropdown', [
             'template' => 'ShadcnTheme:header/theme_toggle'
@@ -120,6 +124,20 @@ class Plugin extends Base
         $this->hook->on('template:auth:login-form:before', [
             'template' => 'ShadcnTheme:auth/login_header'
         ]);
+    }
+
+    private function isSettingsPage(): bool
+    {
+        $controller = $this->router->getController();
+        $plugin = $this->router->getPlugin();
+
+        if (($plugin === '' && $controller === 'ConfigController') || $plugin === 'ModMenu') {
+            return true;
+        }
+
+        // Kanboard dispatches an explicit query-string controller before matching the path.
+        return $this->request->getStringParam('controller') === ''
+            && str_starts_with($this->router->getPath(), 'config/');
     }
 
     /**
@@ -190,7 +208,7 @@ class Plugin extends Base
      */
     public function getPluginVersion(): string
     {
-        return '1.2.0';
+        return '1.3.0';
     }
 
     /**

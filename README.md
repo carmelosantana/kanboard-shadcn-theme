@@ -1,5 +1,8 @@
 # ShadcnTheme — Kanboard Plugin
 
+> **Deprecated.** ShadcnTheme 1.3.0 is the final release. To switch to Harbor,
+> open ModMenu and choose **Migrate**. [Harbor on GitHub](https://github.com/carmelosantana/kanboard-harbor)
+
 A modern Kanboard theme inspired by [shadcn/ui](https://ui.shadcn.com/) design
 principles.  Ships dark mode as the default, with a per-user light / dark / system
 toggle, accessible task card colors and a branded login card. The site logo, favicon
