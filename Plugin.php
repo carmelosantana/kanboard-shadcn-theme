@@ -2,6 +2,7 @@
 
 namespace Kanboard\Plugin\ShadcnTheme;
 
+use Kanboard\Core\Http\Router;
 use Kanboard\Core\Plugin\Base;
 
 /**
@@ -133,6 +134,11 @@ class Plugin extends Base
 
         if (($plugin === '' && $controller === 'ConfigController') || $plugin === 'ModMenu') {
             return true;
+        }
+
+        // Unmatched paths fall back to the core dashboard.
+        if ($plugin === '' && $controller === Router::DEFAULT_CONTROLLER) {
+            return false;
         }
 
         // Kanboard dispatches an explicit query-string controller before matching the path.

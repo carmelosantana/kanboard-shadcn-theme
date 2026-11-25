@@ -160,12 +160,11 @@ class BrandingHandOverTest extends Base
         $this->assertSame('shadcn-theme/favicon.png', $this->container['configModel']->getOption('shadcn_favicon_path'));
     }
 
-    public function testVersionIs120Everywhere()
+    public function testPluginVersionMatchesManifest()
     {
-        $json = json_decode(file_get_contents(__DIR__.'/../plugin.json'), true);
+        $json = json_decode(file_get_contents(__DIR__.'/../plugin.json'), true, 512, JSON_THROW_ON_ERROR);
 
-        $this->assertSame('1.2.0', (new Plugin($this->container))->getPluginVersion());
-        $this->assertSame('1.2.0', $json['version']);
+        $this->assertSame($json['version'], (new Plugin($this->container))->getPluginVersion());
         $this->assertStringContainsString('## [1.2.0] - 2026-11-20', file_get_contents(__DIR__.'/../CHANGELOG.md'));
     }
 

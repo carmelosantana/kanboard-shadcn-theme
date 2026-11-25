@@ -52,6 +52,7 @@ class DeprecatedBannerTest extends Base
             'admin on a board' => [Role::APP_ADMIN, '', $board, false],
             'admin on a task' => [Role::APP_ADMIN, '', ['controller' => 'TaskViewController', 'action' => 'show'], false],
             'admin on a board overriding a config path' => [Role::APP_ADMIN, 'config/branding/1', $board, false],
+            'admin on an unmatched config path' => [Role::APP_ADMIN, 'config/unknown', [], false],
         ];
     }
 }
